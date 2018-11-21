@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.mytest.MainActivity">
+
+    <TextClock
+        android:format12Hour="yyyy年MM月dd日 hh:mm:ss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="你好"
+        android:background="@drawable/bg_border"
+        android:textSize="50sp" />
+
+    <Button
+        android:id="@+id/btn_custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="customview" />
+
+    <Button
+        android:id="@+id/btn_smart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="smartrefresh" />
+
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test" />
+    <Button
+        android:id="@+id/btn_gridlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="gridlayout" />
+    <Button
+        android:id="@+id/btn_adapterview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="adapterview" />
+    <Button
+        android:id="@+id/btn_animator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="animator" />
+</LinearLayout>
