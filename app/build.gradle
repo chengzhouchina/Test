@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 26
@@ -15,6 +16,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    //greendao配置
+    greendao{
+        schemaVersion 1 //数据库版本号 升级时可配置
+        daoPackage 'com.mytest.greendao.db' //由greendao自动生成代码所在的包名，默认的是在项目包下面新建一个gen
+        targetGenDir 'src/main/java' //设置自动生成代码的目录
     }
 }
 
@@ -33,5 +40,7 @@ dependencies {
     //SmartRefreshLayout
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'
+    compile 'org.greenrobot:greendao:3.2.2'
+    compile 'com.lzy.net:okgo:3.0.4'
 
 }

@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context="com.mytest.MainActivity">
 
     <TextClock
@@ -51,4 +52,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="animator" />
+    <Button
+        android:id="@+id/btn_mmp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mimopay" />
 </LinearLayout>
