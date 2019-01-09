@@ -9,10 +9,12 @@
     tools:context="com.mytest.MainActivity">
 
     <TextClock
+        android:visibility="gone"
         android:format12Hour="yyyy年MM月dd日 hh:mm:ss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
+        android:visibility="gone"
         android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,23 +40,32 @@
         android:layout_height="wrap_content"
         android:text="test" />
     <Button
+        android:visibility="gone"
         android:id="@+id/btn_gridlayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="gridlayout" />
     <Button
+        android:visibility="gone"
         android:id="@+id/btn_adapterview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="adapterview" />
     <Button
+        android:visibility="gone"
         android:id="@+id/btn_animator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="animator" />
     <Button
-        android:id="@+id/btn_mmp"
+        android:visibility="gone"
+        android:id="@+id/btn_timer_shaft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="mimopay" />
+        android:text="timershaft" />
+    <WebView
+        android:id="@+id/webview"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

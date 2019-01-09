@@ -18,11 +18,12 @@ import android.widget.TextView;
 
 import com.mytest.MainActivity;
 import com.mytest.R;
+import com.mytest.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ViewActivity extends AppCompatActivity {
+public class ViewActivity extends BaseActivity {
 
     @BindView(R.id.exlv)
     ExpandableListView exlv;
@@ -30,10 +31,22 @@ public class ViewActivity extends AppCompatActivity {
     Spinner spinner;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view);
-        ButterKnife.bind(this);
+    public int initLayout() {
+        return R.layout.activity_view;
+    }
+
+    @Override
+    public void initIntent() {
+
+    }
+
+    @Override
+    public void addListener() {
+
+    }
+
+    @Override
+    public void initData() {
         ExpandableListAdapter adapter = new ExpandableListAdapter() {
             int[] logos = new int[]{
                     R.drawable.app_icon,
@@ -154,9 +167,15 @@ public class ViewActivity extends AppCompatActivity {
 
         String[] arr = {"孙悟空","猪八戒","沙僧"};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ViewActivity.this
-        ,android.R.layout.simple_list_item_multiple_choice,arr);
+                ,android.R.layout.simple_list_item_multiple_choice,arr);
         spinner.setAdapter(arrayAdapter);
     }
+
+    @Override
+    public void onClick(View view) {
+
+    }
+
     private TextView getTextView(){
         AbsListView.LayoutParams lp = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,64);
         TextView textView = new TextView(ViewActivity.this);

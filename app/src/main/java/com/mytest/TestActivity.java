@@ -14,11 +14,6 @@ public class TestActivity extends BaseActivity {
     Button btn_back;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public int initLayout() {
         return R.layout.activity_test;
     }
@@ -26,6 +21,11 @@ public class TestActivity extends BaseActivity {
     @Override
     public void addListener() {
         btn_back.setOnClickListener(this);
+    }
+
+    @Override
+    public void initData() {
+
     }
 
     @Override
