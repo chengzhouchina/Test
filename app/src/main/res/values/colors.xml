@@ -3,4 +3,16 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="e7e7d7d">#7e7d7d</color>
+
+
+    <color name="white">#ffffff</color>
+    <color name="color_0393FF">#0393FF</color>
+    <color name="bg_dialog">#6f7579</color>
+    <color name="nav_item_color_ic">#616161</color>
+    <color name="bottom_nav_bg">@color/white</color>
+    <color name="bottom_nav_checked">#00ACC1</color>
+    <color name="bottom_nav_not_checked">#cccccc</color>
+    <color name="colorWhiteTransparent50">#80ffffff</color>
+
 </resources>

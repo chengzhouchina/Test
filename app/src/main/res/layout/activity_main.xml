@@ -1,71 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.mytest.MainActivity">
 
-    <TextClock
-        android:visibility="gone"
-        android:format12Hour="yyyy年MM月dd日 hh:mm:ss"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="你好"
-        android:background="@drawable/bg_border"
-        android:textSize="50sp" />
-
-    <Button
-        android:id="@+id/btn_custom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="customview" />
-
-    <Button
-        android:id="@+id/btn_smart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="smartrefresh" />
-
-    <Button
-        android:id="@+id/btn_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test" />
-    <Button
-        android:visibility="gone"
-        android:id="@+id/btn_gridlayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="gridlayout" />
-    <Button
-        android:visibility="gone"
-        android:id="@+id/btn_adapterview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="adapterview" />
-    <Button
-        android:visibility="gone"
-        android:id="@+id/btn_animator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="animator" />
-    <Button
-        android:visibility="gone"
-        android:id="@+id/btn_timer_shaft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="timershaft" />
-    <WebView
-        android:id="@+id/webview"
-        android:visibility="gone"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:background="?attr/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"/>
+
+        <TextClock
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:format12Hour="yyyy年MM月dd日 hh:mm:ss"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_border"
+            android:gravity="center"
+            android:text="你好"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_custom"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="customview" />
+
+        <Button
+            android:id="@+id/btn_smart"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="smartrefresh" />
+
+        <Button
+            android:id="@+id/btn_test"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="test" />
+
+        <Button
+            android:id="@+id/btn_gridlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="gridlayout" />
+
+        <Button
+            android:id="@+id/btn_adapterview"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="adapterview" />
+
+        <Button
+            android:id="@+id/btn_animator"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="animator" />
+
+        <Button
+            android:id="@+id/btn_timer_shaft"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="timershaft" />
+
+        <Button
+            android:id="@+id/btn_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="notification" />
+
+        <Button
+            android:id="@+id/btn_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="camera and picture" />
+
+        <Button
+            android:id="@+id/btn_eventbus"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="eventbus" />
+
+        <Button
+            android:id="@+id/btn_network"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="network" />
+
+        <Button
+            android:id="@+id/btn_location"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="location" />
+
+        <Button
+            android:id="@+id/btn_data_store"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="datastore" />
+
+        <Button
+            android:id="@+id/btn_service_practice"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="servicepractice" />
+
+        <Button
+            android:id="@+id/btn_material_design"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="materialdesign" />
+        <Button
+            android:id="@+id/btn_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="dialog" />
+
+        <Button
+            android:id="@+id/btn_qq_redpoint"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="QQRedpoint" />
+
+        <Button
+            android:id="@+id/btn_greendao_test"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="GREENDAO" />
+
+        <Button
+            android:id="@+id/btn_blur"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="BITMAP BLUR" />
+
+        <Button
+            android:id="@+id/btn_navigation"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="bottom navigation" />
+        <Button
+            android:id="@+id/btn_retrofit"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="retrofit" />
+        <Button
+            android:id="@+id/btn_rxjava"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="rxjava" />
+        <Button
+            android:id="@+id/btn_mvp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="mvp" />
+        <Button
+            android:id="@+id/btn_data_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="datapicker" />
+
+    </LinearLayout>
+
+    <!--<ScrollView-->
+        <!--android:visibility="gone"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv2"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+    <!--</ScrollView>-->
+
+
+</ScrollView>

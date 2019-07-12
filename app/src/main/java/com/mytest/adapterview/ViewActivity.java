@@ -1,9 +1,6 @@
 package com.mytest.adapterview;
 
 import android.database.DataSetObserver;
-import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.mytest.MainActivity;
 import com.mytest.R;
 import com.mytest.base.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class ViewActivity extends BaseActivity {
 
@@ -54,12 +49,12 @@ public class ViewActivity extends BaseActivity {
                     R.drawable.app_icon,
             };
             private String[] armTypes = new String[]{
-                    "神族兵种","虫族兵种","人族兵种"
+                    "神族兵种", "虫族兵种", "人族兵种"
             };
             private String[][] arms = new String[][]{
-                    {"狂战士","龙骑士"},
-                    {"小狗","刺蛇"},
-                    {"机枪兵","护士MM"}
+                    {"狂战士", "龙骑士"},
+                    {"小狗", "刺蛇"},
+                    {"机枪兵", "护士MM"}
             };
 
             @Override
@@ -81,11 +76,13 @@ public class ViewActivity extends BaseActivity {
             public int getChildrenCount(int groupPosition) {
                 return arms[groupPosition].length;
             }
+
             //指定组位置处的组数据
             @Override
             public Object getGroup(int groupPosition) {
                 return armTypes[groupPosition];
             }
+
             //获取指定组位置、指定子列表项处的子列表项数据
             @Override
             public Object getChild(int groupPosition, int childPosition) {
@@ -106,6 +103,7 @@ public class ViewActivity extends BaseActivity {
             public boolean hasStableIds() {
                 return true;
             }
+
             //该方法决定每个组选项的外观
             @Override
             public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
@@ -123,7 +121,7 @@ public class ViewActivity extends BaseActivity {
             @Override
             public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
                 TextView textView = getTextView();
-                textView.setText(getChild(groupPosition,childPosition).toString());
+                textView.setText(getChild(groupPosition, childPosition).toString());
                 return textView;
             }
 
@@ -165,9 +163,9 @@ public class ViewActivity extends BaseActivity {
         };
         exlv.setAdapter(adapter);
 
-        String[] arr = {"孙悟空","猪八戒","沙僧"};
+        String[] arr = {"孙悟空", "猪八戒", "沙僧"};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ViewActivity.this
-                ,android.R.layout.simple_list_item_multiple_choice,arr);
+                , android.R.layout.simple_list_item_multiple_choice, arr);
         spinner.setAdapter(arrayAdapter);
     }
 
@@ -176,12 +174,12 @@ public class ViewActivity extends BaseActivity {
 
     }
 
-    private TextView getTextView(){
-        AbsListView.LayoutParams lp = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,64);
+    private TextView getTextView() {
+        AbsListView.LayoutParams lp = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 64);
         TextView textView = new TextView(ViewActivity.this);
         textView.setLayoutParams(lp);
         textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
-        textView.setPadding(36,0,0,0);
+        textView.setPadding(36, 0, 0, 0);
         textView.setTextSize(20);
         return textView;
     }

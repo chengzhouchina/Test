@@ -1,61 +1,53 @@
 package com.mytest;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.database.DataSetObserver;
-import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
+import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.AbsListView;
 import android.widget.Button;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.callback.AbsCallback;
-import com.lzy.okgo.callback.Callback;
-import com.lzy.okgo.model.HttpHeaders;
-import com.lzy.okgo.model.Progress;
-import com.lzy.okgo.model.Response;
-import com.lzy.okgo.request.base.Request;
 import com.mytest.adapterview.ViewActivity;
 import com.mytest.animator.AnimatorActivity;
+import com.mytest.applicationArchitecture.mvp.presenter.IpInfoActivity;
 import com.mytest.base.BaseActivity;
+import com.mytest.blur.BitmapBlurActivity;
+import com.mytest.bottomNavigation.BottomNavigationActivity;
+import com.mytest.cameraphoto.ChoosePicActivity;
 import com.mytest.customview.CustomActivity;
+import com.mytest.customview.qqredpoint.QQRedPointActivity;
+import com.mytest.datastore.DataStoreActivity;
+import com.mytest.datastore.GreenDaoActivity;
+import com.mytest.dialog.DialogActivity;
+import com.mytest.eventbus.EventBusActivity;
 import com.mytest.gridlayout.ShowBigPicActivity;
+import com.mytest.internet.NetworkActivity;
+import com.mytest.location.LocationActivity;
+import com.mytest.materialdesign.DesignActivity;
+import com.mytest.notification.NotificationActivity;
+import com.mytest.retrofit.RetrofitActivity;
+import com.mytest.rxjava.RxjavaActivity;
+import com.mytest.servicepractice.DownloadActivity;
 import com.mytest.smartrefresh.SmartActivity;
 import com.mytest.timershaft.TimerShaftActivity;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import com.mytest.webview.WebviewActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import butterknife.OnClick;
+import kr.co.namee.permissiongen.PermissionGen;
 
-public class MainActivity extends BaseActivity implements View.OnTouchListener {
+public class MainActivity extends BaseActivity {
 
+    private static final int REQUEST_PERMISSION_SETTING = 200;
     @BindView(R.id.btn_custom)
     Button btn_custom;
     @BindView(R.id.btn_smart)
@@ -70,90 +62,205 @@ public class MainActivity extends BaseActivity implements View.OnTouchListener {
     Button btn_animator;
     @BindView(R.id.btn_timer_shaft)
     Button btn_timer_shaft;
-
-    @BindView(R.id.webview)
-    WebView webView;
+    @BindView(R.id.btn_notification)
+    Button btn_notification;
+    @BindView(R.id.btn_camera)
+    Button btn_camera;
+    @BindView(R.id.btn_eventbus)
+    Button btn_eventbus;
+    @BindView(R.id.btn_network)
+    Button btn_network;
+    @BindView(R.id.btn_location)
+    Button btn_location;
+    @BindView(R.id.btn_data_store)
+    Button btn_data_store;
+    @BindView(R.id.btn_service_practice)
+    Button btn_service_practice;
+    @BindView(R.id.btn_material_design)
+    Button btn_material_design;
+    @BindView(R.id.btn_dialog)
+    Button btn_dialog;
+    @BindView(R.id.btn_qq_redpoint)
+    Button btn_qq_redpoint;
+    @BindView(R.id.btn_greendao_test)
+    Button btn_greendao_test;
+    @BindView(R.id.btn_blur)
+    Button btn_blur;
+    @BindView(R.id.btn_navigation)
+    Button btn_navigation;
 
 
     @BindView(R.id.tv)
     TextView tv;
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     private static final int CODE = 100;
 
-
-        @Override
+    @Override
     public int initLayout() {
-            //AppCompatActivity隐藏标题栏
+        //AppCompatActivity隐藏标题栏
 //            if(getSupportActionBar() != null){
 //                getSupportActionBar().hide();
 //            }
-
-            //activity隐藏标题栏
+        //activity隐藏标题栏
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
         return R.layout.activity_main;
     }
 
     @Override
-    public void initIntent() {
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void initIntent() {
+        setSupportActionBar(toolbar);
     }
 
     @Override
     public void addListener() {
         btn_custom.setOnClickListener(this);
-        btn_custom.setOnTouchListener(this);
         btn_smart.setOnClickListener(this);
         btn_test.setOnClickListener(this);
         btn_gridlayout.setOnClickListener(this);
         btn_adapterview.setOnClickListener(this);
         btn_animator.setOnClickListener(this);
         btn_timer_shaft.setOnClickListener(this);
+        btn_notification.setOnClickListener(this);
+        btn_camera.setOnClickListener(this);
+        btn_eventbus.setOnClickListener(this);
+        btn_network.setOnClickListener(this);
+        btn_location.setOnClickListener(this);
+        btn_data_store.setOnClickListener(this);
+        btn_service_practice.setOnClickListener(this);
+        btn_material_design.setOnClickListener(this);
+        btn_dialog.setOnClickListener(this);
+        btn_qq_redpoint.setOnClickListener(this);
+        btn_greendao_test.setOnClickListener(this);
+        btn_blur.setOnClickListener(this);
+        btn_navigation.setOnClickListener(this);
     }
 
-    public static boolean isInstallApp(Context context, String pack_name) {
-        final PackageManager packageManager = context.getPackageManager();// 获取packagemanager
-        List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);// 获取所有已安装程序的包信息
-        if (pinfo != null) {
-            for (int i = 0; i < pinfo.size(); i++) {
-                String pn = pinfo.get(i).packageName.toLowerCase(Locale.ENGLISH);
-                if (pn.equals(pack_name)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 
     @Override
     public void initData() {
+//        Toaster.show(getApplicationContext(),getPackageName());
+//        startActivity(new Intent(this, com.weapp.wj.ui.MainActivity.class).putExtra("channel","bsbwj")
+//                .putExtra("third_uid","1").putExtra("phone","18876386487"));
+//        StaticFans fans = new StaticFans();
+//        fans.otherMethod(123);
+//        fans.<Integer>otherMethod(123);
+
+//        Class<?>[] clazzes = Reflect.getAllInterface(AnimalImpl.class);
+//        SpannableStringBuilder builder = new SpannableStringBuilder();
+//        for (Class clazz : clazzes){
+//            builder.append(clazz.getName());
+//            builder.append("  ");
+//        }
+//        Log.e("mytest", "AnimalImpl继承的所有接口:"+ builder.toString());
+
+        //枚举
+//        Class cla = Person.class;
+//        Constructor[] constructors = cla.getDeclaredConstructors();
+//        for (Constructor item : constructors){
+//            Logger.d("枚举到的构造函数："+item.toString());
+//        }
+//
+//        try {
+//            Constructor constructor = cla.getDeclaredConstructor(Integer.class,String.class);
+//            Logger.d("指定参数得到的构造函数："+constructor.toString());
+//        } catch (NoSuchMethodException e) {
+//            e.printStackTrace();
+//        }
+//
+//        Map<String,String> map = new HashMap<>();
+//        for(Map.Entry<String,String> entry: map.entrySet()){
+//
+//        }
+
+//        PermissionGen.with(MainActivity.this).addRequestCode(100).permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE).request();
+
+
+//        DialogUtil.showProgress(this);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        LocalBroadcastManager manager = LocalBroadcastManager.getInstance(this);
+
 //        steepStatusBar();
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("http://www.baidu.com"));
-        startActivity(intent);
+        //打开浏览器
+//        Intent intent = new Intent(Intent.ACTION_VIEW);
+//        intent.setData(Uri.parse("http://www.baidu.com"));
+//        startActivity(intent);
+
+        // 同一服务只会开启1个工作线程
+        // 在onHandleIntent（）函数里，依次处理传入的Intent请求
+        // 将请求通过Bundle对象传入到Intent，再传入到服务里
+
+//        // 请求1
+//        Intent i = new Intent(this,MyIntentService.class);
+//        Bundle bundle = new Bundle();
+//        bundle.putString("taskName", "task1");
+//        i.putExtras(bundle);
+//        startService(i);
+//
+//        // 请求2
+//        Intent i2 = new Intent(this,MyIntentService.class);
+//        Bundle bundle2 = new Bundle();
+//        bundle2.putString("taskName", "task2");
+//        i2.putExtras(bundle2);
+//        startService(i2);
+//
+//        startService(i);  //多次启动
+//
+//        //启动长期在后台执行定时任务的服务
+//        startService(new Intent(this,LongRunningService.class));
+//        getApplicationMsg();
+        FragmentManager supportFragmentManager = getSupportFragmentManager();
     }
 
-    private long first;
+//    @PermissionSuccess(requestCode = 100)
+//    private void test() {
+////        OkhttpUtils.okhttpUploadFile();
+////        OkhttpUtils.okhttpGet();
+////        OkHttpEngine.getInstance(this).getAsynHttp("http://blog.csdn.net/itachi85", new ResultCallback() {
+////            @Override
+////            public void onError(Request request, Exception e) {
+////
+////            }
+////
+////            @Override
+////            public void onResponse(Response response) throws IOException {
+////                Log.e("mytest", "okhttpGet: -- Main " + response.body().string());
+////            }
+////        });
+//        Main.createChannel(String.valueOf(Environment.getExternalStorageDirectory() + "/dzm_qudao.txt"));
+//    }
+//
+//    @PermissionFail(requestCode = 100)
+//    private void fail() {
+//        Toaster.show(this, "请求权限失败");
+//    }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_custom:
-                Log.d("mytest", "onClick: x -- " + v.getX());
-                Log.d("mytest", "onClick: y -- " + v.getY());
-                first = System.currentTimeMillis();
-//                startActivity(new Intent(this, CustomActivity.class));
+//                Intent intent = new Intent(Intent.ACTION_VIEW);
+//                intent.setData(Uri.parse("https://www.baidu.com"));
+//                startActivity(intent);
+                startActivity(new Intent(this, CustomActivity.class));
                 break;
             case R.id.btn_smart:
-                long second = System.currentTimeMillis();
-
-                Log.d("mytest", "onClick: first-- " + first);
-                Log.d("mytest", "onClick: second-- " + second);
-                Log.d("mytest", "onClick: -- " + (second - first));
-//                startActivity(new Intent(this, SmartActivity.class));
+                startActivity(new Intent(this, SmartActivity.class));
                 break;
             case R.id.btn_test:
-                startActivityForResult(new Intent(MainActivity.this, TestActivity.class), CODE);
+                startActivity(new Intent(MainActivity.this, TestActivity.class));
                 break;
             case R.id.btn_gridlayout:
                 startActivity(new Intent(this, ShowBigPicActivity.class));
@@ -167,23 +274,52 @@ public class MainActivity extends BaseActivity implements View.OnTouchListener {
             case R.id.btn_timer_shaft:
                 startActivity(new Intent(this, TimerShaftActivity.class));
                 break;
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CODE) {
-            Log.d("mytest", "onClick: btn_test-- " + first);
-            if (resultCode == RESULT_OK) {
-                tv.setText("我不好");
-            }
+            case R.id.btn_notification:
+                startActivity(new Intent(this, NotificationActivity.class));
+                break;
+            case R.id.btn_camera:
+//                startActivity(new Intent(this, CameraAlbumTestActivity.class));
+                startActivity(new Intent(this, ChoosePicActivity.class));
+                break;
+            case R.id.btn_eventbus:
+                startActivity(new Intent(this, EventBusActivity.class));
+                break;
+            case R.id.btn_network:
+                startActivity(new Intent(this, NetworkActivity.class));
+                break;
+            case R.id.btn_location:
+                startActivity(new Intent(this, LocationActivity.class));
+                break;
+            case R.id.btn_data_store:
+                startActivity(new Intent(this, DataStoreActivity.class));
+                break;
+            case R.id.btn_service_practice:
+                startActivity(new Intent(this, DownloadActivity.class));
+                break;
+            case R.id.btn_material_design:
+                startActivity(new Intent(this, DesignActivity.class));
+                break;
+            case R.id.btn_dialog:
+                startActivity(new Intent(this, DialogActivity.class));
+                break;
+            case R.id.btn_qq_redpoint:
+                startActivity(new Intent(this, QQRedPointActivity.class));
+                break;
+            case R.id.btn_greendao_test:
+                startActivity(new Intent(this, GreenDaoActivity.class));
+                break;
+            case R.id.btn_blur:
+                startActivity(new Intent(this, BitmapBlurActivity.class));
+                break;
+            case R.id.btn_navigation:
+                startActivity(new Intent(this, BottomNavigationActivity.class));
+                break;
         }
     }
 
     /*
     判断版本号，版本号小于19不好使
-  */
+    */
     private void steepStatusBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             // 透明状态栏
@@ -193,19 +329,6 @@ public class MainActivity extends BaseActivity implements View.OnTouchListener {
             getWindow().addFlags(
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
-    }
-
-
-    @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-        switch (motionEvent.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                Toast.makeText(MainActivity.this, "you are SHABI", Toast.LENGTH_SHORT).show();
-                Log.d("mytest", "onClick: onTouchEvent x -- " + motionEvent.getX());
-                Log.d("mytest", "onClick: onTouchEvent y -- " + motionEvent.getY());
-                break;
-        }
-        return false;
     }
 
     @Override
@@ -227,5 +350,30 @@ public class MainActivity extends BaseActivity implements View.OnTouchListener {
             default:
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        PermissionGen.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+    }
+
+    @OnClick(R.id.btn_retrofit)
+    public void btn_retrofit() {
+        startActivity(new Intent(MainActivity.this, RetrofitActivity.class));
+    }
+
+    @OnClick(R.id.btn_rxjava)
+    public void btn_rxjava() {
+        startActivity(new Intent(MainActivity.this, RxjavaActivity.class));
+    }
+
+    @OnClick(R.id.btn_mvp)
+    public void btn_mvp() {
+        startActivity(new Intent(MainActivity.this, WebviewActivity.class));
+    }
+
+    @OnClick(R.id.btn_data_picker)
+    public void btn_data_picker() {
+        startActivity(new Intent(MainActivity.this, DataPickerActivity.class));
     }
 }

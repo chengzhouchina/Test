@@ -2,5 +2,16 @@
     <string name="app_name">MyTest</string>
     <string name="tips">提示</string>
 
-    <string name="jingdong">openapp.jdmobile://virtual?params={"category":"jump","des":"m","url":"https://u.jd.com/lMozsi","keplerID":"0","keplerFrom":"1","kepler_param":{"source":"kepler-open","otherData":{"mopenbp7":"0"},"channel":"fef31839aaed4895adde6788577e8ac7"},"union_open":"union_cps"}</string>
+    <string name="jingdong" translatable="false">openapp.jdmobile://virtual?params={"category":"jump","des":"m","url":"https://u.jd.com/lMozsi","keplerID":"0","keplerFrom":"1","kepler_param":{"source":"kepler-open","otherData":{"mopenbp7":"0"},"channel":"fef31839aaed4895adde6788577e8ac7"},"union_open":"union_cps"}</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="bye_burger_bottom_behavior">com.wingsofts.byeburgernavigationview.ByeBurgerBottomBehavior</string>
+
+    <string name="home_pager">Home pager</string>
+    <string name="knowledge_hierarchy">Hierarchy</string>
+    <string name="wx_article">WX article</string>
+    <string name="navigation">Navigation</string>
+    <string name="project">Project</string>
 </resources>

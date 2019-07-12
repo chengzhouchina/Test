@@ -1,18 +1,23 @@
 package com.mytest.base;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.mytest.utils.ActivityCollector;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.ButterKnife;
 
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener{
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(initLayout());
+        ActivityCollector.addActivity(this);
         ButterKnife.bind(this);
         addListener();
         initIntent();
@@ -20,14 +25,17 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     }
 
     public abstract int initLayout();
+
     public abstract void initIntent();
+
     public abstract void addListener();
+
     public abstract void initData();
 
     @Override
     public abstract void onClick(View view);
 
-    public void back(){
+    public void back() {
         finish();
     }
 }

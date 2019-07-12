@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.mytest">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 存储权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 通话记录 -->
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <!-- 允许应用访问联系人通讯录信息 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- Allows an application to record audio. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Allows an application to modify global audio settings. -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <!-- Allows access to the vibrator. -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 允许访问摄像头进行拍照 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 允许查看应用的使用情况 -->
+    <!-- 由于该权限默认只授予系统应用，所以添加了ignore属性。然后通过如下代码进而手动打开权限： -->
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+    <!-- android 8.0 未知来源应用安装权限 -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
+    <!-- 通讯录 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 短信 -->
+    <uses-permission android:name="android.permission.READ_SMS" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <!-- 自动对焦 -->
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <!--
+    resizeableActivity 多窗口模式
+       screenOrientation portrait竖屏 landscape横屏
+    -->
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:resizeableActivity="false"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -18,22 +56,68 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="openapp.jdmobile"
-                    android:host="virtual"/>
-            </intent-filter>
         </activity>
-        <activity android:name=".customview.CustomActivity" />
+        <activity
+            android:name=".customview.CustomActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".smartrefresh.SmartActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".gridlayout.ShowBigPicActivity" />
         <activity android:name=".adapterview.ViewActivity" />
         <activity android:name=".animator.AnimatorActivity" />
-        <activity android:name=".timershaft.TimerShaftActivity"/>
+        <activity android:name=".timershaft.TimerShaftActivity" />
+        <activity android:name=".notification.NotificationActivity" />
+        <activity android:name=".cameraphoto.ChoosePicActivity" />
+        <activity android:name=".eventbus.EventBusActivity" />
+        <activity android:name=".eventbus.SecondActivity" />
+
+        <service android:name=".service.MyService" />
+        <service android:name=".service.MyIntentService" />
+        <service android:name=".service.LongRunningService" />
+
+        <receiver android:name=".service.AlarmReceiver" />
+
+        <activity android:name=".internet.NetworkActivity" />
+        <activity android:name=".location.LocationActivity" />
+        <activity android:name=".datastore.DataStoreActivity" />
+        <activity android:name=".cameraphoto.CameraAlbumTestActivity" />
+        <activity android:name=".applicationArchitecture.mvp.presenter.IpInfoActivity" />
+
+        <!-- <provider -->
+        <!-- android:name="android.support.v4.content.FileProvider" -->
+        <!-- android:exported="false" -->
+        <!-- android:grantUriPermissions="true" -->
+        <!-- android:authorities="com.mytest.cameraalbumtest.fileprovider"> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
+        <!-- android:resource="@xml/file_paths"/> -->
+        <!-- </provider> -->
+        <service
+            android:name=".servicepractice.DownloadService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".servicepractice.DownloadActivity" />
+        <activity android:name=".materialdesign.DesignActivity" />
+        <activity
+            android:name=".materialdesign.FruitActivity"
+            android:theme="@style/FruitActivityTheme" />
+        <activity android:name=".dialog.DialogActivity" />
+        <activity android:name=".customview.qqredpoint.QQRedPointActivity" />
+        <activity android:name=".animator.XBallsFallActivity" />
+        <activity android:name=".datastore.GreenDaoActivity" />
+        <activity android:name=".blur.BitmapBlurActivity" />
+        <activity android:name=".bottomNavigation.BottomNavigationActivity" />
+        <activity android:name=".retrofit.RetrofitActivity" />
+        <activity android:name=".rxjava.RxjavaActivity" />
+
+        <receiver
+            android:name=".BatteryChangeReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".DataPickerActivity" />
+        <activity android:name=".webview.WebviewActivity"></activity>
     </application>
 
 </manifest>

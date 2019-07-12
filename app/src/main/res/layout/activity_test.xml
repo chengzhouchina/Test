@@ -1,13 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.mytest.TestActivity">
+
     <Button
-        android:id="@+id/btn_back"
-        android:text="back"
+        android:id="@+id/btn_camera"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="拍照" />
+
+    <Button
+        android:id="@+id/btn_get_phone_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="手机信息" />
+
+    <Button
+        android:id="@+id/btn_audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始录制" />
+
+    <Button
+        android:id="@+id/btn_sensor_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开传感器" />
+    <Button
+        android:id="@+id/btn_sensor_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="关闭传感器" />
+    <Button
+        android:id="@+id/btn_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="定位" />
+
+    <Button
+        android:id="@+id/btn_sport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="计步传感器" />
+
+    <ImageView
+        android:id="@+id/iv_test"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+    <com.mytest.widget.CameraView
+        android:id="@+id/cameraview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
 </LinearLayout>

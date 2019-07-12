@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+<div>
+    <button onclick="sentoraccelerometer_click()">重力传感器</button>
+</div>
+<div>
+    <button onclick="sensorlight_click()">光线传感器</button>
+</div>
+<div>
+    <button onclick="audio_click()">录音</button>
+</div>
+<div>
+    <button onclick="camerafront_click()">摄像头切换</button>
+</div>
+<div>
+    <button onclick="cameraback_click()">拍照</button>
+</div>
+<div>
+    <button onclick="recording_click()">录像</button>
+</div>
+<div>
+    <button onclick="applicationTime_click()">其它应用使用时长</button>
+</div>
+<div>
+    <button onclick="location_click()">位置定位</button>
+</div>
+<div>
+    <button onclick="battery_click()">电池情况</button>
+</div>
+<div>
+    <button onclick="imei_click()">imei</button>
+</div>
+<div>
+    <button onclick="isroot_click()">isroot</button>
+</div>
+<div>
+    <button onclick="sms_click()">短信</button>
+</div>
+<div>
+    <button onclick="calllog_click()">通话记录</button>
+</div>
+<div>
+    <button onclick="phone_click()">通讯录</button>
+</div>
+<div>
+    <button onclick="closeSentor_click()">关闭传感器</button>
+</div>
+<div>
+    <button onclick="system_click()">android版本和手机型号</button>
+</div>
+<div>
+    <button onclick="reqOther_click()">获取其它权限</button>
+</div>
+</body>
+<script>
+
+    Android.saveUid('13260609256');
+
+    function sentoraccelerometer_click() {
+        Android.sentoraccelerometer()
+    }
+    function sentoraccelerometer_receive(accelerometer) {
+        alert(accelerometer);
+    }
+
+    function sensorlight_click() {
+        Android.sensorlight()
+    }
+    function sensorlight_receive(sensorlight) {
+        alert(sensorlight);
+    }
+
+    function audio_click() {
+        Android.audio()
+    }
+    function audio_receive(audio) {
+        alert(audio);
+    }
+
+    function camerafront_click() {
+        Android.camerafront()
+    }
+
+
+    function cameraback_click() {
+        Android.cameraback()
+    }
+
+    function applicationTime_click() {
+        Android.applicationTime()
+    }
+    function applicationTime_receive(applicationTime) {
+        alert(applicationTime);
+    }
+
+    function location_click() {
+        Android.location()
+    }
+    function location_receive(location) {
+        alert(location);
+    }
+
+    function battery_click() {
+        Android.battery()
+    }
+    function battery_receive(battery) {
+        alert(battery);
+    }
+    function recording_click() {
+         Android.recording()
+    }
+
+    function imei_click() {
+        Android.imei()
+    }
+    function imei_receive(imei) {
+        alert(imei);
+    }
+
+    function isroot_click() {
+        Android.isroot()
+    }
+    function isroot_receive(isroot) {
+        alert(isroot);
+    }
+
+    function sms_click() {
+        Android.sms()
+    }
+    function sms_receive(isroot) {
+        alert(isroot);
+    }
+
+    function calllog_click() {
+        Android.calllog()
+    }
+    function calllog_receive(isroot) {
+        alert(isroot);
+    }
+
+    function phone_click() {
+        Android.phone()
+    }
+    function phone_receive(isroot) {
+        alert(isroot);
+    }
+
+     function closeSentor_click() {
+        Android.closeSentor()
+    }
+    function closeSentor_receive(isroot) {
+        alert(isroot);
+    }
+
+     function system_click() {
+        Android.systemversion()
+    }
+    function systemversion_receive(version) {
+        alert(version);
+    }
+
+    function reqOther_click() {
+        Android.reqOther()
+    }
+      function respOther_receive() {
+        alert('其它权限已拿到');
+    }
+
+
+
+
+</script>
+
+</html>

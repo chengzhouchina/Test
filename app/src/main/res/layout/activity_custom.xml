@@ -1,12 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.mytest.customview.CustomActivity">
 
     <com.mytest.customview.DrawView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/all_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:id="@+id/btn_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="check"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_uncheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="uncheck"
+                android:textAllCaps="false" />
+        </RelativeLayout>
+
+        <com.mytest.customview.CheckView
+            android:id="@+id/check_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/all_bottom" />
+    </RelativeLayout>
+
+    <com.mytest.customview.MyTextView
+        android:id="@+id/mytext"
+        android:text="测试Text"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
+    <com.mytest.customview.MyRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.mytest.customview.MyTextView
+            android:id="@+id/rll_mytext"
+            android:text="测试Text"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+    </com.mytest.customview.MyRelativeLayout>
+
 </LinearLayout>
