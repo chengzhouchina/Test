@@ -57,7 +57,7 @@ public class BaseApplication extends Application {
         });
 
         //步数宝初始化
-        com.weapp.wj.util.WUtils.init(this);
+//        com.weapp.wj.util.WUtils.init(this);
 
         //初始化
         OkHttpFinalConfiguration.Builder builder = new OkHttpFinalConfiguration.Builder();

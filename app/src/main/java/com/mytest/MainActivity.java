@@ -109,15 +109,29 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
+    /**
+     * 异常情况下Activity 重建，非用户主动去销毁
+     * 系统异常终止时，调用onSavaInstanceState来保存状态
+     * 该方法调用在onStop之前，但和onPause没有时序关系
+     * onSaveInstanceState与onPause的区别：前者适用于对临时性状态的保存，而后者适用于对数据的持久化保存
+     * @param outState
+     */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
     }
 
+    /**
+     * Activity被重新创建时，调用onRestoreInstanceState（该方法在onStart之后），并将onSavaInstanceState
+     * 保存的Bundle对象作为参数传到onRestoreInstanceState与onCreate方法
+     * @param savedInstanceState
+     */
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
     }
+
+
 
     @Override
     public void initIntent() {
